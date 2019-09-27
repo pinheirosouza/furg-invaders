@@ -22,8 +22,9 @@ class GameMenu:
     def button(self, title, x, y, w, h, i, a, color, action = None):
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
+        self.rect2 = pygame.image.load('data/button/rect2.png')
+        self.screen.blit(self.rect2, (x, y))
         if x+w > mouse[0] > x and y+h > mouse[1] > y:
-            pygame.draw.rect(self.screen, a, (x,y,w,h))
             if click[0] == 1 and action != None:
                 if action == "1":
                     self.button_play = True
@@ -32,9 +33,10 @@ class GameMenu:
                 elif action == "3":
                     self.button_quit = True
         else:
-            pygame.draw.rect(self.screen, i, (x,y,w,h))
+            self.rect = pygame.image.load('data/button/rect.png')
+            self.screen.blit(self.rect, (x, y))
 
-        smallText = pygame.font.Font('freesansbold.ttf', 19)
+        smallText = pygame.font.Font('data/fonts/spaceranger.ttf', 22)
         TextSurf, TextRect = self.text_objects(title, smallText, color)
         TextRect.center = ((x+(w/2)),(y+(h/2)))
         self.screen.blit(TextSurf, TextRect)
@@ -48,7 +50,7 @@ class GameMenu:
         self.bg = pygame.image.load('data/backgrounds/1.png').convert_alpha()
         self.screen.blit(self.bg, (0, 0))
         self.logo = pygame.image.load('data/backgrounds/logo.png').convert_alpha()
-        self.screen.blit(self.logo, (160, 45))
+        self.screen.blit(self.logo, (10, 90))
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -59,9 +61,9 @@ class GameMenu:
             rect_activate = (60,60,60)
             rect = (30, 30, 30)	
 
-            self.button("Start", 257, 230, 130, 40, rect, rect_activate, options, "1")
-            self.button("Records", 257, 280, 130, 40, rect, rect_activate, options, "2")
-            self.button("Quit", 257, 330, 130, 40, rect, rect_activate, options, "3")
+            self.button("Start", 100, 230, 130, 40, rect, rect_activate, options, "1")
+            self.button("Records", 100, 280, 130, 40, rect, rect_activate, options, "2")
+            self.button("Quit", 100, 330, 130, 40, rect, rect_activate, options, "3")
             
             if self.button_play == True:
                 playSoundClick()
@@ -70,7 +72,9 @@ class GameMenu:
                 playSoundClick()
                 return 2
             elif self.button_quit == True:
+                playSoundClick()
                 pygame.quit()
+                return 3
                 quit()
             pygame.display.update()
             self.CLOCK.tick(self.FPS)

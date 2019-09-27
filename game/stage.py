@@ -93,7 +93,7 @@ class Stage:
             for event in pygame.event.get():
                 if event.type == QUIT:
                     exit()
-
+            
             #Keyboard hold
             keys = pygame.key.get_pressed()    
             if keys[K_LEFT] or keys[K_a]:
@@ -183,8 +183,8 @@ class Stage:
         
 
     def showText(self, text):
-        font = pygame.font.Font('freesansbold.ttf', 40)
-        textSurface = font.render(text, True, (0,0,0))
+        font = pygame.font.Font('data/fonts/spaceranger.ttf', 40)
+        textSurface = font.render(text, True, (255,255,255))
         dest = textSurface.get_rect()
         dest.center = (320,240)
         self.screen.blit(textSurface, dest)
