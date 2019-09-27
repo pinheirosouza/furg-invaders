@@ -44,12 +44,12 @@ class GameMenu:
     	return textSurface, textSurface.get_rect()
 
     def run(self):
-    	self.CLOCK = pygame.time.Clock()
-    	self.bg = pygame.image.load('data/backgrounds/1.png').convert_alpha()
-    	self.screen.blit(self.bg, (0, 0))
+        self.CLOCK = pygame.time.Clock()
+        self.bg = pygame.image.load('data/backgrounds/1.png').convert_alpha()
+        self.screen.blit(self.bg, (0, 0))
         self.logo = pygame.image.load('data/backgrounds/logo.png').convert_alpha()
         self.screen.blit(self.logo, (160, 45))
-    	while self.running:
+        while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     quit()

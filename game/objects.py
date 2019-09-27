@@ -92,7 +92,7 @@ class Entity(GameObject):
             shot.do()
 
 class Player(Entity):
-    def __init__(self, key, position, shot_key = '1', shot_speed = 4, life = 10, damage = 4, speed = 3, score = 0, attack_interval=500):
+    def __init__(self, key, position, shot_key = '1', shot_speed = 4, life = 10, damage = 4, speed = 3, score = 0, attack_interval=40):
         Entity.__init__(self, key, position, shot_key, shot_speed, life, damage, speed)
         self.score = score
         self.shot_direction = (0, -1)
@@ -109,7 +109,7 @@ class Player(Entity):
             return True
 
 class Monster(Entity):
-    def __init__(self, key, position, shot_key, shot_speed, life = 10, damage = 2, value = 1, speed = 2):
+    def __init__(self, key, position, shot_key, shot_speed, life = 10, damage = 2, value = 1, speed = 200):
         Entity.__init__(self, key, position, shot_key, shot_speed, life, damage, speed)
         self.shot_direction = (0, 1)
         self.value = value
@@ -132,10 +132,10 @@ class HealthBar(pygame.sprite.Sprite):
         self.player = player
         self.full_health = self.player.life
         pygame.sprite.Sprite.__init__(self)
-        self.buffer = pygame.Rect(20, 0, 600, 40)
+        self.buffer = pygame.Rect(20, 0, 600, 20)
         self.border = self.buffer.copy().inflate(2, 3)
         self.border.x = 18
-        self.border.y = -2
+        self.border.y = 2
 
     def draw(self, surface):
         self.buffer.width = (600*self.player.life)/self.full_health
