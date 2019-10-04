@@ -5,7 +5,7 @@ from game import *
 
 def main():
     x = 0
-    while x != 3:
+    while x != 2:
         WIDTH = 640
         HEIGHT = 480
 
@@ -20,8 +20,5 @@ def main():
         if x == 1:
             stage = Stage(screen, 60)
             stage.start()
-        else:
-            print("Records aqui!")
-            #SHOW RECORDS!!!
 
 main()

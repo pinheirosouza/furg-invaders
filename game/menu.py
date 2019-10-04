@@ -29,8 +29,6 @@ class GameMenu:
                 if action == "1":
                     self.button_play = True
                 elif action == "2":
-                    self.button_records = True
-                elif action == "3":
                     self.button_quit = True
         else:
             self.rect = pygame.image.load('data/button/rect.png')
@@ -61,20 +59,23 @@ class GameMenu:
             rect_activate = (60,60,60)
             rect = (30, 30, 30)	
 
-            self.button("Start", 100, 230, 130, 40, rect, rect_activate, options, "1")
-            self.button("Records", 100, 280, 130, 40, rect, rect_activate, options, "2")
-            self.button("Quit", 100, 330, 130, 40, rect, rect_activate, options, "3")
+            self.button("Start", 100, 250, 130, 40, rect, rect_activate, options, "1")
+            self.button("Quit", 100, 300, 130, 40, rect, rect_activate, options, "2")
             
+            font = pygame.font.Font('data/fonts/Imperfecta Regular Rough.ttf', 18)
+            textSurface = font.render("Pedro & Hans", True, (255,255,255))
+            dest = textSurface.get_rect()
+            dest.center = (550,450)
+            self.screen.blit(textSurface, dest)
+            pygame.display.flip()
+
             if self.button_play == True:
                 playSoundClick()
                 return 1
-            elif self.button_records == True:
-                playSoundClick()
-                return 2
             elif self.button_quit == True:
                 playSoundClick()
                 pygame.quit()
-                return 3
+                return 2
                 quit()
             pygame.display.update()
             self.CLOCK.tick(self.FPS)

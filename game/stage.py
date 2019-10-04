@@ -161,6 +161,11 @@ class Stage:
                 self.done = True
 
                 text = "You lost!  Score: " + str(self.player.score)
+
+                scoretxt = open("record-list.txt","a")
+                scoretxt.write(str(self.player.score)+"\n")
+                scoretxt.close()
+
                 self.showText(text)
                 playSoundDeath()
             elif len(self.monsters) <= 0:
@@ -178,6 +183,11 @@ class Stage:
                 self.start()
             else:
                 text = "You won!  Score: " + str(self.player.score)
+
+                scoretxt = open("record-list.txt","a")
+                scoretxt.write(str(self.player.score)+"\n")
+                scoretxt.close()
+
                 self.showText(text)
                 pygame.time.delay(2000)
         
