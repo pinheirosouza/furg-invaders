@@ -211,6 +211,11 @@ class Stage:
 
         if not starting:
             self.health_bar.draw(self.screen)
+            font = pygame.font.Font('data/fonts/Imperfecta Regular Rough.ttf', 18)
+            textSurface = font.render('FASE ' + str(self.key), True, (255,255,255))
+            dest = textSurface.get_rect()
+            dest.center = (530,17)
+            self.screen.blit(textSurface, dest)
 
         self.player.update()
         self.player.update_attack_clock(self.CLOCK)
